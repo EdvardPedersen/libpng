@@ -1,0 +1,16 @@
+.{
+    .name = .SDL_image,
+    .version = "0.0.0",
+    .dependencies = .{
+        .libpng = .{
+            .url = "https://download.sourceforge.net/libpng/libpng-1.6.50.tar.gz",
+            .hash = "N-V-__8AAGrVXwC00HYe0ep6gbt70MXihr_woI0886_w8tD8",
+        },
+    },
+    .fingerprint = 0x7d6df367a49af608, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.16.0-dev.747+493ad58ff",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}
