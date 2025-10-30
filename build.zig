@@ -3,6 +3,12 @@ const std = @import("std");
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
+    const zlib_dep = b.dependency("zlib", .{
+        .target = target,
+        .optimize = optimize
+    });
+    const zlib_lib = zlib_dep.artifact("zlib");
+
     const lib_dep = b.dependency("libpng", .{});
     const lib = b.addLibrary(.{
         .linkage = .static,
@@ -11,6 +17,7 @@ pub fn build(b: *std.Build) void {
     });
     lib.installHeader(lib_dep.path("png.h"), "png.h");
     lib.linkLibC();
+    lib.root_module.linkLibrary(zlib_lib);
     lib.root_module.addCSourceFiles(.{
         .root = lib_dep.path(""), 
         .files = &.{

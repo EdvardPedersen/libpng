@@ -6,6 +6,10 @@
             .url = "https://download.sourceforge.net/libpng/libpng-1.6.50.tar.gz",
             .hash = "N-V-__8AAGrVXwC00HYe0ep6gbt70MXihr_woI0886_w8tD8",
         },
+        .zlib = .{
+            .url = "git+https://github.com/EdvardPedersen/zlib.git#c0bf81fb321148d5a890fd5298ec8d9f3350af9e",
+            .hash = "zlib-0.0.0-NUD9FW8GAAAUkTwNciPyvOxZQ9vWVzvya-tnVtnGtSNy",
+        },
     },
     .fingerprint = 0xb7a09eb4b1e36086, // Changing this has security and trust implications.
     .minimum_zig_version = "0.16.0-dev.747+493ad58ff",
