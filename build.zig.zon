@@ -1,5 +1,5 @@
 .{
-    .name = .SDL_image,
+    .name = .libpng,
     .version = "0.0.0",
     .dependencies = .{
         .libpng = .{
@@ -7,7 +7,7 @@
             .hash = "N-V-__8AAGrVXwC00HYe0ep6gbt70MXihr_woI0886_w8tD8",
         },
     },
-    .fingerprint = 0x7d6df367a49af608, // Changing this has security and trust implications.
+    .fingerprint = 0xb7a09eb4b1e36086, // Changing this has security and trust implications.
     .minimum_zig_version = "0.16.0-dev.747+493ad58ff",
     .paths = .{
         "build.zig",
