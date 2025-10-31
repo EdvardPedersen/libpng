@@ -15,14 +15,15 @@ pub fn build(b: *std.Build) void {
         .name = "libpng",
         .root_module = b.addModule("libpng", .{.target = target, .optimize = optimize}),
     });
-    lib.installHeader(lib_dep.path("png.h"), "png.h");
     const wf = b.addWriteFiles();
     const install = wf.addCopyFile(lib_dep.path("scripts/pnglibconf.h.prebuilt"), "pnglibconf.h");
     lib.step.dependOn(&wf.step);
     lib.linkLibC();
     lib.root_module.linkLibrary(zlib_lib);
     lib.root_module.addIncludePath(wf.getDirectory());
+    lib.installHeader(lib_dep.path("png.h"), "png.h");
     lib.installHeader(install, "pnglibconf.h");
+    lib.installHeader(lib_dep.path("pngconf.h"), "pngconf.h");
     lib.root_module.addCSourceFiles(.{
         .root = lib_dep.path(""), 
         .files = &.{
