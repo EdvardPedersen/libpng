@@ -17,11 +17,12 @@ pub fn build(b: *std.Build) void {
     });
     lib.installHeader(lib_dep.path("png.h"), "png.h");
     const wf = b.addWriteFiles();
-    _ = wf.addCopyFile(lib_dep.path("scripts/pnglibconf.h.prebuilt"), "pnglibconf.h");
+    const install = wf.addCopyFile(lib_dep.path("scripts/pnglibconf.h.prebuilt"), "pnglibconf.h");
     lib.step.dependOn(&wf.step);
     lib.linkLibC();
     lib.root_module.linkLibrary(zlib_lib);
     lib.root_module.addIncludePath(wf.getDirectory());
+    lib.installHeader(install, "pnglibconf.h");
     lib.root_module.addCSourceFiles(.{
         .root = lib_dep.path(""), 
         .files = &.{
